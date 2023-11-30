@@ -2,6 +2,7 @@ import firebase_admin
 from firebase_admin import db
 import time
 import requests
+import os
 
 # 監視するパスのリスト 
 paths = [
