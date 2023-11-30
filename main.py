@@ -22,6 +22,7 @@ prev_data = {path: None for path in paths}
 
 LINE_API_URL = 'https://notify-api.line.me/api/notify'
 LINE_API_TOKEN = os.environ['API_KEY']
+# export API_KEY="key"でAPIのキーを指定
 
 #LINE送信関数
 def post_message(message):
