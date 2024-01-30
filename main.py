@@ -7,7 +7,7 @@ import threading
 
 #slack HTTP POSTのURL
 #OSの環境変数にしたい
-url = "https://hooks.slack.com/services/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"
+url = "URL"
 
 # 監視するパスのリスト 
 paths = [
