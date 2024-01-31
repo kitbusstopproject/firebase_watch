@@ -58,8 +58,12 @@ def check_data(path):
                 'text': f'{path}: {data} 更新なし'
             }))
 
-def main():
+#def main():
 
+
+
+if __name__ == '__main__':
+  
   threads = []
 
   while True:
@@ -72,7 +76,3 @@ def main():
     for t in threads:
         t.join()
         time.sleep(60)
-
-
-if __name__ == '__main__':
-  main()
