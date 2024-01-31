@@ -6,6 +6,8 @@ import os
 import threading
 import json
 
+#firebaseの認証キーはGOOGLE_APPLICATION_CREDENTIALSに環境変数として設定する
+
 #slack HTTP POSTのURL
 #OSの環境変数にしたい
 url = "https://dokoka_tekitouna_slack_url.com"
