@@ -22,6 +22,7 @@ paths = [
 ]
 
 # Firebaseに接続
+#bus_dokoのアカウントで
 firebase_admin.initialize_app(options={
   'databaseURL': 'https://buslocationsystem-69.firebaseio.com'
 })
