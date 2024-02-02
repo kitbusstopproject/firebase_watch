@@ -26,6 +26,7 @@ scoop install gcloud
 git clone https://github.com/kitbusstopproject/firebase_watch.git
 cd firebase_watch
 set GOOGLE_APPLICATION_CREDENTIALS="json_key_path"
+python main.py
 ```
 
 # Note
