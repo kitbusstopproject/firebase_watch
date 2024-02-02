@@ -7,13 +7,13 @@ firebaseを監視し、動きがなければslackで通知するツール
 必要なライブラリ
 
 * gcloud(?)
-* firebase_admin
+* firebase-admin
 
 # Installation
 
 
 ```bash
-pip install firebase_admin
+pip install firebase-admin
 ```
 
 ```Poweshell
