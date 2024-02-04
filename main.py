@@ -1,5 +1,6 @@
 import firebase_admin
 from firebase_admin import db
+from firebase_admin import credentials
 import time
 import requests
 import os
@@ -10,7 +11,7 @@ import json
 
 #slack HTTP POSTのURL
 #OSの環境変数にしたい
-url = "https://dokoka_tekitouna_slack_url.com"
+url = "https://hooks.slack.com/services/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"
 
 # 監視するパスのリスト 
 paths = [
@@ -32,6 +33,7 @@ prev_data = {path: None for path in paths}
 
 # Firebaseからデータを取得し、前回のデータと比較
 def check_data(path):
+    print("check_data_func")
     global prev_data
     while True:
         data = db.reference(path).get()
@@ -59,10 +61,6 @@ def check_data(path):
                 'text': f'{path}: {data} 更新なし'
             }))
 
-#def main():
-
-
-
 if __name__ == '__main__':
   
   threads = []
@@ -76,4 +74,4 @@ if __name__ == '__main__':
       t.start()
     for t in threads:
         t.join()
-        time.sleep(60)
+        time.sleep(600)
