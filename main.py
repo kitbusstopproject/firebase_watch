@@ -19,7 +19,7 @@ paths = [
   '/BusLocation/route_n/lat',
   '/BusLocation/route_no/lat', 
   '/BusLocation/route_s/lat',
-  '/BusLocation/route' 
+  '/BusLocation/route_no/lat',
 ]
 
 # Firebaseに接続
@@ -33,45 +33,40 @@ prev_data = {path: None for path in paths}
 
 # Firebaseからデータを取得し、前回のデータと比較
 def check_data(path):
-    print("check_data_func")
     global prev_data
     while True:
         data = db.reference(path).get()
+        data=float(data)
 
         #初回の場合はデータを格納して終了
-        if data is None:
-            print(f'{path}: {data} 初回')
+        if prev_data[path] is None:
+            print(f'{path}: {data} 初回 \n')
             prev_data[path] = data
-            requests.post(url, data = json.dumps({
-                'text': f'{path}: {data} 初回'
-            }))
+            time.sleep(60)
 
         #正常更新の場合はデータを格納して終了
-        elif data != prev_data[path]:
-            print(f'{path}: {data} 更新あり')
+        elif float(data) != prev_data[path]:
             prev_data[path] = data
-            requests.post(url, data = json.dumps({
-                'text': f'{path}: {data} 更新あり'
-            }))
+            print(f'{path}: {data} 更新あり \n')
+            time.sleep(60)
 
         #更新がない場合slackに通知
-        elif data == prev_data[path]:
-            print(f'{path}: {data} 更新なし')
+        elif float(data) == prev_data[path]:
+            print(f'{path}: {data} 更新なし \n')
             requests.post(url, data = json.dumps({
                 'text': f'{path}: {data} 更新なし'
             }))
+            time.sleep(60)
 
 if __name__ == '__main__':
   
   threads = []
 
   while True:
-    print("while")
     for path in paths:
-      print("for")  
       t = threading.Thread(target=check_data, args=(path,))
       threads.append(t)
       t.start()
     for t in threads:
         t.join()
-        time.sleep(600)
+        time.sleep(60)
