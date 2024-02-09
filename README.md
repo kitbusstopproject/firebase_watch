@@ -22,7 +22,7 @@ pip install firebase-admin
 
 ```PowerShell
 & $env:Temp\GoogleCloudSDKInstaller.exe
-    ```
+```
 
 # Usage
 
