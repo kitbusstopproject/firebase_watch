@@ -18,7 +18,9 @@ pip install firebase-admin
 
 ```Poweshell
 (New-Object Net.WebClient).DownloadFile("https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe", "$env:Temp\GoogleCloudSDKInstaller.exe")
+```
 
+```PowerShell
 & $env:Temp\GoogleCloudSDKInstaller.exe
     ```
 
